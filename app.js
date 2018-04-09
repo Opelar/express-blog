@@ -5,13 +5,13 @@ const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const db = require("./app/db/db");
+const db = require("./app/lib/db");
+const debug = require("./app/lib/debug");
 const connectMongo = require("connect-mongo");
 const config = require("./config/default")
 
 // import router
 const index = require("./app/routes/index");
-const users = require("./app/routes/users");
 const admin = require("./app/routes/admin");
 
 // main app
@@ -60,8 +60,10 @@ app.use(
 
 // use router
 app.use("/", index);
-app.use("/users", users);
 app.use("/admin", admin);
+
+// 挂载debug中间件
+app.use(debug);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,19 +1,14 @@
 const express = require("express");
 const router = express.Router();
+const adminAction = require("../actions/admin_action");
 
-/* GET admin login */
-router.get("/", function(req, res, next) {
-  res.render("admin_login", { title: "博客后台登录" });
-});
-
-/* GET admin index */
-router.get("/index", function(req, res, next) {
-  res.render("admin_index", { title: "博客后台管理" });
-});
-
-/* GET admin create */
-router.get("/create", function(req, res, next) {
-  res.render("admin_article_create", { title: "文章录入" });
-});
+// GET admin index
+router.get("/", adminAction.adminIndexPage);
+// GET admin login 
+router.get("/login", adminAction.loginPage);
+// POST admin login
+router.post("/login", adminAction.login);
+// GET admin create 
+router.get("/create", adminAction.adminArticleCreate);
 
 module.exports = router;
