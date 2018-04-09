@@ -35,7 +35,7 @@ app.all("*", (req, res, next) => {
 });
 
 // view engine setup
-app.set("views", path.join(__dirname, "/app/views"));
+app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "hbs");
 // MongoStore
 const MongoStore = connectMongo(session);
