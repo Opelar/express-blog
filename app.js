@@ -12,7 +12,9 @@ const config = require("./config/default")
 // import router
 const index = require("./app/routes/index");
 const users = require("./app/routes/users");
+const admin = require("./app/routes/admin");
 
+// main app
 const app = express();
 
 // Access-Control-Allow-Origin
@@ -59,6 +61,7 @@ app.use(
 // use router
 app.use("/", index);
 app.use("/users", users);
+app.use("/admin", admin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

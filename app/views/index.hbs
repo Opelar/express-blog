@@ -1,2 +1,300 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div id="page-container" class="header-navbar-fixed header-navbar-transparent">
+  <!-- Header -->
+  <header id="header-navbar" class="content-mini content-mini-full">
+    <div class="content-boxed">
+      <!-- Header Navigation Right -->
+      <ul class="nav-header pull-right">
+        <li>
+          <!-- Themes functionality initialized in App() -> uiHandleTheme() -->
+          <div class="btn-group">
+            <button class="btn btn-link text-white dropdown-toggle" data-toggle="dropdown" type="button">
+              <i class="si si-drop"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right font-s13">
+              <li>
+                <a data-toggle="theme" data-theme="default" tabindex="-1" href="javascript:void(0)">
+                  <i class="fa fa-circle text-default pull-right"></i>
+                  <span class="font-w600">默认</span>
+                </a>
+              </li>
+              <li>
+                <a data-toggle="theme" data-theme="./css/themes/amethyst.min.css" tabindex="-1" href="javascript:void(0)">
+                  <i class="fa fa-circle text-amethyst pull-right"></i>
+                  <span class="font-w600">紫晶</span>
+                </a>
+              </li>
+              <li>
+                <a data-toggle="theme" data-theme="./css/themes/city.min.css" tabindex="-1" href="javascript:void(0)">
+                  <i class="fa fa-circle text-city pull-right"></i>
+                  <span class="font-w600">都市</span>
+                </a>
+              </li>
+              <li>
+                <a data-toggle="theme" data-theme="./css/themes/flat.min.css" tabindex="-1" href="javascript:void(0)">
+                  <i class="fa fa-circle text-flat pull-right"></i>
+                  <span class="font-w600">扁平</span>
+                </a>
+              </li>
+              <li>
+                <a data-toggle="theme" data-theme="./css/themes/modern.min.css" tabindex="-1" href="javascript:void(0)">
+                  <i class="fa fa-circle text-modern pull-right"></i>
+                  <span class="font-w600">现代</span>
+                </a>
+              </li>
+              <li>
+                <a data-toggle="theme" data-theme="./css/themes/smooth.min.css" tabindex="-1" href="javascript:void(0)">
+                  <i class="fa fa-circle text-smooth pull-right"></i>
+                  <span class="font-w600">平滑</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="hidden-md hidden-lg">
+          <!-- Toggle class helper (for main header navigation below in small screens), functionality initialized in App() -> uiToggleClass() -->
+          <button class="btn btn-link text-white pull-right" data-toggle="class-toggle" data-target=".js-nav-main-header" data-class="nav-main-header-o"
+            type="button">
+            <i class="fa fa-navicon"></i>
+          </button>
+        </li>
+      </ul>
+      <!-- END Header Navigation Right -->
+
+      <!-- Main Header Navigation -->
+      <ul class="js-nav-main-header nav-main-header pull-right">
+        <li class="text-right hidden-md hidden-lg">
+          <!-- Toggle class helper (for main header navigation in small screens), functionality initialized in App() -> uiToggleClass() -->
+          <button class="btn btn-link text-white" data-toggle="class-toggle" data-target=".js-nav-main-header" data-class="nav-main-header-o"
+            type="button">
+            <i class="fa fa-times"></i>
+          </button>
+        </li>
+        <li>
+          <a class="active" href="####">Home</a>
+        </li>
+        <li>
+          <a class="nav-submenu" href="javascript:void(0)">Dropdown</a>
+          <ul>
+            <li>
+              <a href="javascript:void(0)">Page</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">Page</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">Page</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="javascript:void(0)">Page</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">Page</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">Page</a>
+        </li>
+      </ul>
+      <!-- END Main Header Navigation -->
+
+      <!-- Header Navigation Left -->
+      <ul class="nav-header pull-left">
+        <li class="header-content">
+          <a class="h5" href="/">
+            <i class="fa fa-circle-o-notch text-primary"></i>
+            <span class="h4 font-w600 text-white">pelar</span>
+          </a>
+        </li>
+      </ul>
+      <!-- END Header Navigation Left -->
+    </div>
+  </header>
+  <!-- END Header -->
+
+  <!-- Main Container -->
+  <main id="main-container">
+    <!-- Hero Content -->
+    <div class="bg-image">
+      <div class="bg-primary-dark-op">
+        <section class="content content-full content-boxed overflow-hidden">
+          <!-- Section Content -->
+          <div class="push-100-t push-50 text-center">
+            <h1 class="h2 text-white push-10" data-toggle="appear" data-class="animated fadeInDown">The latest stories only for you.</h1>
+            <h2 class="h5 text-white-op" data-toggle="appear" data-class="animated fadeInDown">Feel free to explore and read.</h2>
+          </div>
+          <!-- END Section Content -->
+        </section>
+      </div>
+    </div>
+    <!-- END Hero Content -->
+
+    <!-- List Content -->
+    <section class="content content-boxed">
+      <!-- Section Content -->
+      <div class="push-50-t push-50">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <!-- Story -->
+            <div class="push" data-toggle="appear" data-offset="50" data-class="animated fadeIn">
+              <a class="block block-link-hover2" href="frontend_blog_story.html">
+                <div class="block-content">
+                  <div class="font-s12 push">
+                    <em class="pull-right">10 min</em>
+                    <span class="text-primary">Ronald George</span> on July 16, 2015
+                  </div>
+                  <h4 class="push-10">Top 10 Destinations</h4>
+                  <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris
+                    adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos
+                    habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit
+                    metus mi.</p>
+                </div>
+              </a>
+            </div>
+            <!-- END Story -->
+
+            <!-- Story -->
+            <div class="push" data-toggle="appear" data-offset="50" data-class="animated fadeIn">
+              <a class="block block-link-hover2" href="frontend_blog_story.html">
+                <div class="block-content">
+                  <div class="font-s12 push">
+                    <em class="pull-right">15 min</em>
+                    <span class="text-primary">Ethan Howard</span> on July 13, 2015
+                  </div>
+                  <h4 class="push-10">Follow Your Dreams</h4>
+                  <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris
+                    adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos
+                    habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit
+                    metus mi.</p>
+                </div>
+              </a>
+            </div>
+            <!-- END Story -->
+
+            <!-- Story -->
+            <div class="push" data-toggle="appear" data-offset="50" data-class="animated fadeIn">
+              <a class="block block-link-hover2" href="frontend_blog_story.html">
+                <div class="block-content">
+                  <div class="font-s12 push">
+                    <em class="pull-right">12 min</em>
+                    <span class="text-primary">Sara Holland</span> on July 6, 2015
+                  </div>
+                  <h4 class="push-10">Travel &amp; Work</h4>
+                  <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris
+                    adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos
+                    habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit
+                    metus mi.</p>
+                </div>
+              </a>
+            </div>
+            <!-- END Story -->
+
+            <!-- Story -->
+            <div class="push" data-toggle="appear" data-offset="50" data-class="animated fadeIn">
+              <a class="block block-link-hover2" href="frontend_blog_story.html">
+                <div class="block-content">
+                  <div class="font-s12 push">
+                    <em class="pull-right">9 min</em>
+                    <span class="text-primary">Roger Hart</span> on June 21, 2015
+                  </div>
+                  <h4 class="push-10">Sleep Better</h4>
+                  <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris
+                    adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos
+                    habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit
+                    metus mi.</p>
+                </div>
+              </a>
+            </div>
+            <!-- END Story -->
+
+            <!-- Story -->
+            <div class="push" data-toggle="appear" data-offset="50" data-class="animated fadeIn">
+              <a class="block block-link-hover2" href="frontend_blog_story.html">
+                <div class="block-content">
+                  <div class="font-s12 push">
+                    <em class="pull-right">5 min</em>
+                    <span class="text-primary">Ann Parker</span> on June 16, 2015
+                  </div>
+                  <h4 class="push-10">Black &amp; White</h4>
+                  <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris
+                    adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos
+                    habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit
+                    metus mi.</p>
+                </div>
+              </a>
+            </div>
+            <!-- END Story -->
+
+            <!-- Story -->
+            <div class="push" data-toggle="appear" data-offset="50" data-class="animated fadeIn">
+              <a class="block block-link-hover2" href="frontend_blog_story.html">
+                <div class="block-content">
+                  <div class="font-s12 push">
+                    <em class="pull-right">3 min</em>
+                    <span class="text-primary">Rebecca Reid</span> on June 1, 2015
+                  </div>
+                  <h4 class="push-10">Exploring the Alps</h4>
+                  <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris
+                    adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos
+                    habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit
+                    metus mi.</p>
+                </div>
+              </a>
+            </div>
+            <!-- END Story -->
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="text-center">
+          <ul class="pagination">
+            <li class="active">
+              <a href="javascript:void(0)">1</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">2</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">3</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">4</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">5</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- END Pagination -->
+      </div>
+      <!-- END Section Content -->
+    </section>
+    <!-- END List Content -->
+
+  </main>
+  <!-- END Main Container -->
+
+  <!-- Footer -->
+  <footer id="page-footer" class="bg-white">
+    <div class="content content-boxed">
+      <!-- Footer Navigation -->
+      <div class="row push-30-t items-push-2x">
+        <div class="col-sm-4">
+          <div class="font-s13">
+            <i class="si si-envelope-open"></i> godmingliang@qq.com
+          </div>
+        </div>
+      </div>
+      <!-- END Footer Navigation -->
+
+    </div>
+  </footer>
+  <!-- END Footer -->
+</div>
+
+<script src="./js/oneui.min.js"></script>
