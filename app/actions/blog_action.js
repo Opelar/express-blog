@@ -2,5 +2,11 @@ const blogAction = (module.exports = {
   // blog home page
   renderHomePage(req, res, next) {
     res.render("index", { title: "博客首页" });
+  },
+
+  renderDeatilsPage(req, res, next) {
+    const query = req.query;
+    console.log(query);
+    res.render("blog_details", { title: "文章详情" });
   }
 });
