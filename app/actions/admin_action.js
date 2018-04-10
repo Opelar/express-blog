@@ -61,6 +61,7 @@ const adminAction = (module.exports = {
     if (!username || !password) {
       res.send({
         code: 3200,
+        status: false,
         msg: "param error",
         data: []
       });
