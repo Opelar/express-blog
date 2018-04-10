@@ -33,13 +33,13 @@ var adap = (module.exports = {
     console.log("init db connection");
 
     // Use connect method to connect to the Server
-    MongoClient.connect(db_conf.mongodb, function(err, _db) {
+    MongoClient.connect(db_conf.mongodb, function(err, client /* _db */) {
       if (err) {
         adap.emit("error", err);
         return;
       }
 
-      db = _db;
+      db = client.db(db_conf.db_name);
 
       db.on("reconnect", function(err) {
         console.log("db reconnection, %s", err && err.stack);
@@ -76,6 +76,7 @@ var adap = (module.exports = {
     return name ? db.db(name) : db;
   },
   getCollection: function(name, cb) {
+    // console.log(db.collection);
     if (!db) {
       //return cb(new Error('no db connection.'));
       throw new Error("no db connection");
