@@ -1,4 +1,5 @@
 const sign = require("../lib/sign");
+const dbAdap = require("../lib/dbAdap");
 
 const adminAction = (module.exports = {
   // get login page

@@ -1,5 +1,5 @@
 module.exports = {
-  port: 8001,
+  port: 3000,
   url: "mongodb://localhost:27017/learn",
   session: {
     name: "SID",

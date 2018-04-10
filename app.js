@@ -5,10 +5,9 @@ const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const db = require("./app/lib/db");
 const debug = require("./app/lib/debug");
-const connectMongo = require("connect-mongo");
-const config = require("./config/default")
+const config = require("./config/default");
+const initDB = require("./app/lib/initDB");
 
 // import router
 const index = require("./app/routes/index");
@@ -35,10 +34,8 @@ app.all("*", (req, res, next) => {
 });
 
 // view engine setup
-app.set("views", path.join(__dirname, "/views"));
+app.set("views", path.join(__dirname, "/app/views"));
 app.set("view engine", "hbs");
-// MongoStore
-const MongoStore = connectMongo(session);
 
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -51,10 +48,9 @@ app.use(
   session({
     name: config.session.name,
     secret: config.session.secret,
-    resave: true,
-    saveUninitialized: false,
-    cookie: config.session.cookie,
-    store: new MongoStore({ url: config.url })
+    resave: false,
+    saveUninitialized: true,
+    cookie: config.session.cookie
   })
 );
 
@@ -82,5 +78,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
+// 初始化mongodb
+initDB();
 
 module.exports = app;
