@@ -8,13 +8,6 @@ function initDB() {
 
   dbAdap.on("db_connect", () => {
     console.log("mongodb connected.");
-
-    // http server init
-    // var server = app.listen(3000, () => {
-    //   var host = server.address().address;
-    //   var port = server.address().port;
-    //   console.log("App listening at http://%s:%s", host, port);
-    // });
   });
 
   dbAdap.on("error", err => {

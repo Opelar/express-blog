@@ -3,33 +3,30 @@ const dbAdap = require("../lib/dbAdap");
 const adminUser = require("../lib/adminUser");
 
 // 注册后台管理用户
-function registerAdmin() {
-  // console.log("admin user:  ", adminUser);
-  let u = {};
-  return dbAdap.getCollection("user").then(col => {
-    col
-      .count({
-        $or: [{ username: adminUser.username }]
-      })
-      .then(res => {
-        if (res) return;
+async function registerAdmin() {
+  try {
+    const User = await dbAdap.getCollection("user");
+    const isExist = await User.count({
+      $or: [{ username: adminUser.username }]
+    });
 
-        // 基础id username
-        u.id = dbAdap.newIdString();
-        u.username = adminUser.username;
-        // 生成盐值及密码hash
-        u.salt = sign.getSalt();
-        u.pwdhash = sign.encodePwd(adminUser.password, u.salt);
-        // 生成创建修改时间戳
-        u.ctime = u.utime = Date.now();
+    console.log(isExist);
+    if (isExist) return;
 
-        // 入库
-        return col.insertOne(u);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  });
+    let u = {};
+    // 基础id username
+    u.id = dbAdap.newIdString();
+    u.username = adminUser.username;
+    // 生成盐值及密码hash
+    u.salt = sign.getSalt();
+    u.pwdhash = sign.encodePwd(adminUser.password, u.salt);
+    // 生成创建修改时间戳
+    u.ctime = u.utime = Date.now();
+    // 入库
+    User.insertOne(u);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 const adminAction = (module.exports = {
@@ -69,40 +66,45 @@ const adminAction = (module.exports = {
       });
     }
 
-    const User = dbAdap.getCollection("user");
+    try {
+      const User = await dbAdap.getCollection("user");
+      const u = await User.findOne({ username: username });
+      // console.log(u);
 
-    User.then(col => {
-      col
-        .findOne({ username: username })
-        .then(u => {
-          if (!u) {
-            res.send({
-              code: "4101",
-              msg: "user not exists",
-              data: []
-            });
-          }
-          let login_hash = sign.encodePwd(password, u.salt);
-          if (u.pwdhash === login_hash) {
-            req.session.userInfo = {
-              id: u.id,
-              username: u.username,
-              ctime: u.ctime
-            };
-            req.session.isLogin = true;
-
-            res.json({
-              code: "200",
-              msg: "login success",
-              data: []
-            });
-          }
-        })
-        .catch(err => {
-          console.log(err);
+      if (!u) {
+        res.send({
+          code: 4101,
+          status: false,
+          msg: "user not exists",
+          data: []
         });
-    }).catch(err => {
-      console.log(err);
-    });
+      }
+
+      let login_hash = sign.encodePwd(password, u.salt);
+      if (u.pwdhash === login_hash) {
+        req.session.userInfo = {
+          id: u.id,
+          username: u.username,
+          ctime: u.ctime
+        };
+        req.session.isLogin = true;
+
+        res.json({
+          code: 200,
+          status: true,
+          msg: "success",
+          data: []
+        });
+      } else {
+        res.json({
+          code: 200,
+          status: false,
+          msg: "The password is incorrect",
+          data: []
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 });

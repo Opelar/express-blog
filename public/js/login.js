@@ -30,17 +30,16 @@
       data: { username: username, password: password },
       dataType: "json",
       success: function(response) {
-        if (response.code === "4101") {
+        if (response.code !== 200 || !response.status) {
           $.toast({
             heading: "error",
             text: response.msg,
             icon: "error",
             position: "top-right"
           });
+          return;
         }
-        if (response.code === "200") {
-          location.href = "/admin";
-        }
+        location.href = "/admin";
       },
       error: function(err) {
         console.log(err);
