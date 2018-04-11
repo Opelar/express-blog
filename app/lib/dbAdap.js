@@ -21,7 +21,7 @@ var adap = (module.exports = {
    * 初始化DB
    * @return {[type]} [description]
    */
-  init: function(db_conf) {
+  init: function (db_conf) {
     if (!db_conf) {
       throw new Error("no db conf passed to dbAdap.");
     }
@@ -33,7 +33,7 @@ var adap = (module.exports = {
     console.log("init db connection");
 
     // Use connect method to connect to the Server
-    MongoClient.connect(db_conf.mongodb, function(err, client /* _db */) {
+    MongoClient.connect(db_conf.mongodb, function (err, client /* _db */) {
       if (err) {
         adap.emit("error", err);
         return;
@@ -41,11 +41,11 @@ var adap = (module.exports = {
 
       db = client.db(db_conf.db_name);
 
-      db.on("reconnect", function(err) {
+      db.on("reconnect", function (err) {
         console.log("db reconnection, %s", err && err.stack);
       });
 
-      db.on("close", function(err) {
+      db.on("close", function (err) {
         if (err) {
           console.log("db close by error. %s", err && err.stack);
           adap.emit("error", err);
@@ -57,7 +57,7 @@ var adap = (module.exports = {
         db = null;
       });
 
-      db.on("error", function(err) {
+      db.on("error", function (err) {
         adap.emit("error", err);
         db.close();
         db = null;
@@ -68,14 +68,14 @@ var adap = (module.exports = {
       adap.emit("db_connect");
     });
   },
-  getDB: function(name) {
+  getDB: function (name) {
     if (!db) {
       throw new Error("no db connection");
     }
 
-    return name ? db.db(name) : db;
+    return name ? db.collection(name) : db;
   },
-  getCollection: function(name, cb) {
+  getCollection: function (name, cb) {
     // console.log(db.collection);
     if (!db) {
       //return cb(new Error('no db connection.'));
@@ -88,7 +88,7 @@ var adap = (module.exports = {
       cb(null, db.collection(name));
     }
   },
-  newIdString: function() {
+  newIdString: function () {
     // 获得string对像, 而不是objectId
     return ObjectID().toString();
   },

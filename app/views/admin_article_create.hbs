@@ -83,21 +83,21 @@
                 <span class="sidebar-mini-hide">首页</span>
               </a>
             </li>
-          
+
             <li>
-              <a  class="active" href="/admin/create">
+              <a class="active" href="/admin/create">
                 <i class="fa fa-list-ul"></i>
                 <span class="sidebar-mini-hide">文章录入</span>
               </a>
             </li>
-          
+
             <li>
               <a href="##">
                 <i class="fa fa-list-ul"></i>
                 <span class="sidebar-mini-hide">文章管理</span>
               </a>
             </li>
-          
+
           </ul>
         </div>
         <!-- END Side Content -->
@@ -165,7 +165,7 @@
       <!-- My Block -->
       <div class="block">
         <div class="block-header" style="border-bottom: 1px solid #dedede; padding-bottom: 0;">
-          <button class="btn btn-info pull-right" type="button">
+          <button id="saveArticle" class="btn btn-info pull-right" type="button">
             <i class="glyphicon glyphicon-saved"></i>
             保存
           </button>
@@ -177,7 +177,12 @@
 
               <div class="form-group">
                 <label class="sr-only" for="title">标题</label>
-                <input type="email" class="form-control" id="title" placeholder="标题">
+                <input type="text" class="form-control" id="title" placeholder="标题" required="required">
+              </div>
+
+              <div class="form-group">
+                <label class="sr-only" for="author">作者</label>
+                <input type="text" class="form-control" id="author" placeholder="作者" required="required">
               </div>
 
               <div class="form-group">
@@ -192,7 +197,11 @@
         </div>
         <div class="block-content" style="height: 600px;">
           <div id="editormd">
-            <textarea style="display:none;">### 从这里书写你!</textarea>
+            <textarea style="display:none;">## 从这里开始!</textarea>
+
+            <textarea class="editormd-markdown-textarea" name="editormd-markdown-doc"></textarea>
+            <!-- html textarea 需要开启配置项 saveHTMLToTextarea == true -->
+            <textarea class="editormd-html-textarea" name="editormd-html-code"></textarea>
           </div>
         </div>
       </div>
@@ -204,10 +213,5 @@
 
 </div>
 
-<script src="/js/oneui.min.js"></script>
 <script src="/libs/editor.md/editormd.min.js"></script>
-<script>
-  var editor = editormd("editormd", {
-    path: "/libs/editor.md/lib/" // Autoload modules mode, codemirror, marked... dependents libs path
-  });
-</script>
+<script src="/js/createArticle.js"></script>

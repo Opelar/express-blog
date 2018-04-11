@@ -1,4 +1,5 @@
 const express = require("express");
+const hbs = require("hbs");
 const path = require("path");
 const favicon = require("serve-favicon");
 const logger = require("morgan");
@@ -36,6 +37,15 @@ app.all("*", (req, res, next) => {
 // view engine setup
 app.set("views", path.join(__dirname, "/app/views"));
 app.set("view engine", "hbs");
+
+// 注册模板引擎helper 
+hbs.registerHelper("formate", function (timestamp) {
+  return new Date(timestamp).toLocaleString();
+});
+
+hbs.registerHelper("decode", function (content) {
+  return decodeURIComponent(content);
+});
 
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

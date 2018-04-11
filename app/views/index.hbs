@@ -135,80 +135,26 @@
       <div class="push-50-t push-50">
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
+            {{#each articleList}}
             <!-- Story -->
             <div class="push" data-toggle="appear" data-offset="50" data-class="animated fadeIn">
-              <a class="block block-link-hover2" href="/details?id=100">
+              <a class="block block-link-hover2" href="/details?id={{id}}">
                 <div class="block-content">
                   <div class="font-s12 push">
-                    <em class="pull-right">10 min</em>
-                    <span class="text-primary">Ronald George</span> on July 16, 2015
+                    {{!-- <em class="pull-right">10 min</em> --}}
+                    <span class="text-primary">{{ author }}</span> on {{#formate ctime}}{{/formate}}
                   </div>
-                  <h4 class="push-10">Top 10 Destinations</h4>
-                  <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris
-                    adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos
-                    habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit
-                    metus mi.</p>
+                  <h4 class="push-10">{{ title }}</h4>
+                  <p>{{ summary }}</p>
                 </div>
               </a>
             </div>
             <!-- END Story -->
+            {{/each}}
 
+            
             <!-- Story -->
-            <div class="push" data-toggle="appear" data-offset="50" data-class="animated fadeIn">
-              <a class="block block-link-hover2" href="/details?id=100">
-                <div class="block-content">
-                  <div class="font-s12 push">
-                    <em class="pull-right">15 min</em>
-                    <span class="text-primary">Ethan Howard</span> on July 13, 2015
-                  </div>
-                  <h4 class="push-10">Follow Your Dreams</h4>
-                  <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris
-                    adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos
-                    habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit
-                    metus mi.</p>
-                </div>
-              </a>
-            </div>
-            <!-- END Story -->
-
-            <!-- Story -->
-            <div class="push" data-toggle="appear" data-offset="50" data-class="animated fadeIn">
-              <a class="block block-link-hover2" href="/details?id=100">
-                <div class="block-content">
-                  <div class="font-s12 push">
-                    <em class="pull-right">12 min</em>
-                    <span class="text-primary">Sara Holland</span> on July 6, 2015
-                  </div>
-                  <h4 class="push-10">Travel &amp; Work</h4>
-                  <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris
-                    adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos
-                    habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit
-                    metus mi.</p>
-                </div>
-              </a>
-            </div>
-            <!-- END Story -->
-
-            <!-- Story -->
-            <div class="push" data-toggle="appear" data-offset="50" data-class="animated fadeIn">
-              <a class="block block-link-hover2" href="/details?id=100">
-                <div class="block-content">
-                  <div class="font-s12 push">
-                    <em class="pull-right">9 min</em>
-                    <span class="text-primary">Roger Hart</span> on June 21, 2015
-                  </div>
-                  <h4 class="push-10">Sleep Better</h4>
-                  <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris
-                    adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos
-                    habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit
-                    metus mi.</p>
-                </div>
-              </a>
-            </div>
-            <!-- END Story -->
-
-            <!-- Story -->
-            <div class="push" data-toggle="appear" data-offset="50" data-class="animated fadeIn">
+            {{!-- <div class="push" data-toggle="appear" data-offset="50" data-class="animated fadeIn">
               <a class="block block-link-hover2" href="/details?id=100">
                 <div class="block-content">
                   <div class="font-s12 push">
@@ -222,26 +168,9 @@
                     metus mi.</p>
                 </div>
               </a>
-            </div>
+            </div> --}}
             <!-- END Story -->
 
-            <!-- Story -->
-            <div class="push" data-toggle="appear" data-offset="50" data-class="animated fadeIn">
-              <a class="block block-link-hover2" href="/details?id=100">
-                <div class="block-content">
-                  <div class="font-s12 push">
-                    <em class="pull-right">3 min</em>
-                    <span class="text-primary">Rebecca Reid</span> on June 1, 2015
-                  </div>
-                  <h4 class="push-10">Exploring the Alps</h4>
-                  <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris
-                    adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos
-                    habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit
-                    metus mi.</p>
-                </div>
-              </a>
-            </div>
-            <!-- END Story -->
           </div>
         </div>
 
