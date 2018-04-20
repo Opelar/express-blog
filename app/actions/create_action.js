@@ -14,13 +14,13 @@ const createAction = (module.exports = {
 
     try {
       const Article = await dbAdap.getCollection("article");
-      let _article = { title, author, summary, content }
+      let _article = { title, author, summary, content };
       _article.id = dbAdap.newIdString();
       _article.ctime = _article.utime = Date.now();
 
       Article.insertOne(_article);
-      
-      // 返回成功 
+
+      // 返回成功
       res.json({
         code: 200,
         status: true,
@@ -30,6 +30,5 @@ const createAction = (module.exports = {
     } catch (error) {
       console.log(error);
     }
-
   }
 });

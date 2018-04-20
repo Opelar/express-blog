@@ -7,11 +7,13 @@ const blogAction = (module.exports = {
     let list = [];
     try {
       const Article = await dbAdap.getCollection("article");
-      initList = await Article.find({}).sort({ ctime: -1 }).toArray();
+      initList = await Article.find({})
+        .sort({ ctime: -1 })
+        .toArray();
     } catch (error) {
       console.log(error);
     }
-    
+
     initList.map((item, index) => {
       let _item = {
         id: item.id,
@@ -19,10 +21,10 @@ const blogAction = (module.exports = {
         author: item.author,
         summary: item.summary,
         ctime: item.ctime
-      }
+      };
       list.push(_item);
-    })
-    
+    });
+
     res.render("index", { title: "博客首页", articleList: list });
   },
 

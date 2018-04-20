@@ -2,7 +2,7 @@ const sign = require("../lib/sign");
 const dbAdap = require("../lib/dbAdap");
 
 const updateAction = (module.exports = {
-  updateArticle(req, res, next) {
+  async updateArticle(req, res, next) {
     let { id, title, author, type, summary, content, from } = req.body;
 
     if (!id || !title || !content) {
