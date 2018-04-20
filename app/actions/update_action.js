@@ -7,6 +7,12 @@ const updateAction = (module.exports = {
 
     if (!id || !title || !content) {
       // 返回参数错误
+      res.send({
+        code: 3200,
+        status: false,
+        msg: "param error",
+        data: []
+      });
       return;
     }
 
@@ -16,6 +22,12 @@ const updateAction = (module.exports = {
 
       if (!artile) {
         // 没找到该文章，返回错误
+        res.send({
+          code: 4101,
+          status: false,
+          msg: "article not exists",
+          data: []
+        });
         return;
       }
 

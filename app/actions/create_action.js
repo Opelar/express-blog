@@ -9,6 +9,12 @@ const createAction = (module.exports = {
 
     if (!title || !content) {
       // 返回参数错误
+      res.send({
+        code: 3200,
+        status: false,
+        msg: "param error",
+        data: []
+      });
       return;
     }
 

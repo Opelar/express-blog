@@ -79,6 +79,7 @@ const adminAction = (module.exports = {
           msg: "user not exists",
           data: []
         });
+        return;
       }
 
       let login_hash = sign.encodePwd(password, u.salt);

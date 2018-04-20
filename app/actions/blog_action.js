@@ -30,6 +30,15 @@ const blogAction = (module.exports = {
 
   async renderDeatilsPage(req, res, next) {
     const query = req.query;
+    if (!query) {
+      res.send({
+        code: 3200,
+        status: false,
+        msg: "param error",
+        data: []
+      });
+      return;
+    }
     let articleItem = {};
     try {
       const Article = await dbAdap.getCollection("article");
