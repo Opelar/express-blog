@@ -1,14 +1,13 @@
-(function ($) {
+(function($) {
   var editor = editormd("editormd", {
     path: "/libs/editor.md/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
     saveHTMLToTextarea: true
   });
 
-  console.log($.toast);
+  // console.log($.toast);
 
-  $("#saveArticle").click(function () {
+  $("#saveArticle").click(function() {
     var $this = $(this);
-    $this.attr("disabled", "disabled");
     var title = $("#title").val();
     var author = $("#author").val();
     var summary = $("#summary").val();
@@ -26,19 +25,21 @@
       return false;
     }
 
+    $this.attr("disabled", "disabled");
+
     var _data = {
       title: title,
       author: author,
       summary: summary,
       content: html
-    }
+    };
 
     $.ajax({
       type: "POST",
       url: "/admin/create",
       data: _data,
       dataType: "json",
-      success: function (response) {
+      success: function(response) {
         if (response.code === 200 && response.status) {
           $.toast({
             heading: "成功",
@@ -52,7 +53,7 @@
           $this.removeAttr("disabled");
         }
       },
-      error: function (err) {
+      error: function(err) {
         console.log(err);
         $.toast({
           heading: "未请求成功",
@@ -60,12 +61,9 @@
           icon: "error",
           position: "top-right"
         });
-
+        debugger;
         $this.removeAttr("disabled");
       }
     });
-
-  })
-
-})(jQuery)
-
+  });
+})(jQuery);
