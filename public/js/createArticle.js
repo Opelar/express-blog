@@ -61,7 +61,7 @@
           icon: "error",
           position: "top-right"
         });
-        debugger;
+        // debugger;
         $this.removeAttr("disabled");
       }
     });
