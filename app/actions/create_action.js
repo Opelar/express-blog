@@ -1,6 +1,6 @@
 const dbAdap = require('../lib/dbAdap');
 
-class CreateActionArticle {
+class CreateArticleAction {
   // 文章录入
   async createArticle(req, res, next) {
     let { title, author, summary, content } = req.body;
@@ -39,4 +39,4 @@ class CreateActionArticle {
   }
 }
 
-module.exports = new CreateActionArticle();
+module.exports = new CreateArticleAction();

@@ -1,6 +1,6 @@
 const dbAdap = require('../lib/dbAdap');
 
-class BlogIndexAction {
+class BlogAction {
   // blog home page
   async renderHomePage(req, res, next) {
     let initList = [];
@@ -14,7 +14,7 @@ class BlogIndexAction {
       console.log(error);
     }
 
-    initList.map((item, index) => {
+    initList.forEach(item => {
       let _item = {
         id: item.id,
         title: item.title,
@@ -51,4 +51,4 @@ class BlogIndexAction {
   }
 }
 
-module.exports = new BlogIndexAction();
+module.exports = new BlogAction();

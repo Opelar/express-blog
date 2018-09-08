@@ -1,4 +1,3 @@
-const sign = require('../lib/sign');
 const dbAdap = require('../lib/dbAdap');
 
 class UpdateArticleAction {
