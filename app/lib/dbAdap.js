@@ -4,8 +4,6 @@
  * @author wangsu@nextlegal.com
  *
  */
-
-var crypto = require("crypto");
 var Mongodb = require("mongodb");
 var MongoClient = Mongodb.MongoClient;
 var ObjectID = Mongodb.ObjectID;

@@ -1,12 +1,12 @@
-const dbAdap = require("../lib/dbAdap");
+const dbAdap = require('../lib/dbAdap');
 
-const blogAction = (module.exports = {
+class BlogIndexAction {
   // blog home page
   async renderHomePage(req, res, next) {
     let initList = [];
     let list = [];
     try {
-      const Article = await dbAdap.getCollection("article");
+      const Article = await dbAdap.getCollection('article');
       initList = await Article.find({})
         .sort({ ctime: -1 })
         .toArray();
@@ -25,8 +25,8 @@ const blogAction = (module.exports = {
       list.push(_item);
     });
 
-    res.render("index", { title: "博客首页", articleList: list });
-  },
+    res.render('index', { title: '博客首页', articleList: list });
+  }
 
   async renderDeatilsPage(req, res, next) {
     const query = req.query;
@@ -34,19 +34,21 @@ const blogAction = (module.exports = {
       res.send({
         code: 3200,
         status: false,
-        msg: "param error",
+        msg: 'param error',
         data: []
       });
       return;
     }
     let articleItem = {};
     try {
-      const Article = await dbAdap.getCollection("article");
+      const Article = await dbAdap.getCollection('article');
       articleItem = await Article.findOne(query);
     } catch (error) {
       console.log(item);
     }
 
-    res.render("blog_details", { title: "文章详情", article: articleItem });
+    res.render('blog_details', { title: '文章详情', article: articleItem });
   }
-});
+}
+
+module.exports = new BlogIndexAction();

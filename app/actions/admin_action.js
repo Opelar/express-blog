@@ -1,11 +1,11 @@
-const sign = require("../lib/sign");
-const dbAdap = require("../lib/dbAdap");
-const adminUser = require("../lib/adminUser");
+const sign = require('../lib/sign');
+const dbAdap = require('../lib/dbAdap');
+const adminUser = require('../lib/adminUser');
 
 // 注册后台管理用户
 async function registerAdmin() {
   try {
-    const User = await dbAdap.getCollection("user");
+    const User = await dbAdap.getCollection('user');
     const isExist = await User.count({
       $or: [{ username: adminUser.username }]
     });
@@ -29,31 +29,31 @@ async function registerAdmin() {
   }
 }
 
-const adminAction = (module.exports = {
+class AdminAction {
   // get login page
   loginPage(req, res, next) {
     if (req.session.isLogin) {
-      return res.redirect("/admin");
+      return res.redirect('/admin');
     }
     registerAdmin();
-    res.render("admin_login", { title: "博客后台登录" });
-  },
+    res.render('admin_login', { title: '博客后台登录' });
+  }
 
   // get admin index
   adminIndexPage(req, res, next) {
     if (!req.session.isLogin) {
-      return res.redirect("/admin/login");
+      return res.redirect('/admin/login');
     }
-    res.render("admin_index", { title: "博客后台管理" });
-  },
+    res.render('admin_index', { title: '博客后台管理' });
+  }
 
   // create article page
   adminArticleCreate(req, res, next) {
     if (!req.session.isLogin) {
-      return res.redirect("/admin/login");
+      return res.redirect('/admin/login');
     }
-    res.render("admin_article_create", { title: "文章录入" });
-  },
+    res.render('admin_article_create', { title: '文章录入' });
+  }
 
   // post login
   async login(req, res, next) {
@@ -62,13 +62,13 @@ const adminAction = (module.exports = {
       res.send({
         code: 3200,
         status: false,
-        msg: "param error",
+        msg: 'param error',
         data: []
       });
     }
 
     try {
-      const User = await dbAdap.getCollection("user");
+      const User = await dbAdap.getCollection('user');
       const u = await User.findOne({ username: username });
       // console.log(u);
 
@@ -76,7 +76,7 @@ const adminAction = (module.exports = {
         res.send({
           code: 4101,
           status: false,
-          msg: "user not exists",
+          msg: 'user not exists',
           data: []
         });
         return;
@@ -94,14 +94,14 @@ const adminAction = (module.exports = {
         res.json({
           code: 200,
           status: true,
-          msg: "success",
+          msg: 'success',
           data: []
         });
       } else {
         res.json({
           code: 200,
           status: false,
-          msg: "The password is incorrect",
+          msg: 'The password is incorrect',
           data: []
         });
       }
@@ -109,4 +109,6 @@ const adminAction = (module.exports = {
       console.log(error);
     }
   }
-});
+}
+
+module.exports = new AdminAction();

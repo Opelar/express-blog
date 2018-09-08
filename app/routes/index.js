@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const blogAction = require("../actions/blog_action");
+const blogIndexAction = require("../actions/blog_action");
 
 // GET home page.
-router.get("/", blogAction.renderHomePage);
+router.get("/", blogIndexAction.renderHomePage);
 // GET article details
-router.get("/details", blogAction.renderDeatilsPage);
+router.get("/details", blogIndexAction.renderDeatilsPage);
 
 module.exports = router;

@@ -1,7 +1,7 @@
-const sign = require("../lib/sign");
-const dbAdap = require("../lib/dbAdap");
+const sign = require('../lib/sign');
+const dbAdap = require('../lib/dbAdap');
 
-const updateAction = (module.exports = {
+class UpdateArticleAction {
   async updateArticle(req, res, next) {
     let { id, title, author, type, summary, content, from } = req.body;
 
@@ -10,14 +10,14 @@ const updateAction = (module.exports = {
       res.send({
         code: 3200,
         status: false,
-        msg: "param error",
+        msg: 'param error',
         data: []
       });
       return;
     }
 
     try {
-      const Article = await dbAdap.getCollection("article");
+      const Article = await dbAdap.getCollection('article');
       const artile = await Article.find({ id: id });
 
       if (!artile) {
@@ -25,7 +25,7 @@ const updateAction = (module.exports = {
         res.send({
           code: 4101,
           status: false,
-          msg: "article not exists",
+          msg: 'article not exists',
           data: []
         });
         return;
@@ -39,4 +39,6 @@ const updateAction = (module.exports = {
       console.log(error);
     }
   }
-});
+}
+
+module.exports = new UpdateArticleAction();

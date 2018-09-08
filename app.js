@@ -1,7 +1,7 @@
 const express = require("express");
 const hbs = require("hbs");
 const path = require("path");
-const favicon = require("serve-favicon");
+// const favicon = require("serve-favicon");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
@@ -38,7 +38,7 @@ app.all("*", (req, res, next) => {
 app.set("views", path.join(__dirname, "/app/views"));
 app.set("view engine", "hbs");
 
-// 注册模板引擎helper 
+// 注册模板引擎helper
 hbs.registerHelper("formate", function (timestamp) {
   return new Date(timestamp).toLocaleString();
 });
