@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "body-parser": "~1.17.1",
+    "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "^4.16.3",
@@ -14,8 +14,13 @@
     "hbs": "~4.0.1",
     "moment": "^2.22.0",
     "mongodb": "^3.0.5",
-    "morgan": "~1.8.1",
+    "morgan": "^1.9.0",
     "pm2": "^2.10.2",
     "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.24.7",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1"
   }
 }
