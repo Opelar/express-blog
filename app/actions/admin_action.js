@@ -4,29 +4,25 @@ const adminUser = require('../lib/adminUser');
 
 // 注册后台管理用户
 async function registerAdmin() {
-  try {
-    const User = await dbAdap.getCollection('user');
-    const isExist = await User.count({
-      $or: [{ username: adminUser.username }]
-    });
+  const User = await dbAdap.getCollection('user');
+  const isExist = await User.count({
+    $or: [{ username: adminUser.username }]
+  });
 
-    console.log(isExist);
-    if (isExist) return;
+  console.log(isExist);
+  if (isExist) return;
 
-    let u = {};
-    // 基础id username
-    u.id = dbAdap.newIdString();
-    u.username = adminUser.username;
-    // 生成盐值及密码hash
-    u.salt = sign.getSalt();
-    u.pwdhash = sign.encodePwd(adminUser.password, u.salt);
-    // 生成创建修改时间戳
-    u.ctime = u.utime = Date.now();
-    // 入库
-    User.insertOne(u);
-  } catch (error) {
-    console.log(error);
-  }
+  let u = {};
+  // 基础id username
+  u.id = dbAdap.newIdString();
+  u.username = adminUser.username;
+  // 生成盐值及密码hash
+  u.salt = sign.getSalt();
+  u.pwdhash = sign.encodePwd(adminUser.password, u.salt);
+  // 生成创建修改时间戳
+  u.ctime = u.utime = Date.now();
+  // 入库
+  User.insertOne(u);
 }
 
 class AdminAction {
@@ -63,7 +59,7 @@ class AdminAction {
         code: 3200,
         status: false,
         msg: 'param error',
-        data: []
+        data: null
       });
     }
 
@@ -77,7 +73,7 @@ class AdminAction {
           code: 4101,
           status: false,
           msg: 'user not exists',
-          data: []
+          data: null
         });
         return;
       }
@@ -95,14 +91,14 @@ class AdminAction {
           code: 200,
           status: true,
           msg: 'success',
-          data: []
+          data: null
         });
       } else {
         res.json({
           code: 200,
           status: false,
           msg: 'The password is incorrect',
-          data: []
+          data: null
         });
       }
     } catch (error) {

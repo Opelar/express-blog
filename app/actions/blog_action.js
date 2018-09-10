@@ -35,7 +35,7 @@ class BlogAction {
         code: 3200,
         status: false,
         msg: 'param error',
-        data: []
+        data: null
       });
       return;
     }

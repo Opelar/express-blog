@@ -33,7 +33,7 @@ class UpdateArticleAction {
       let _article = { id, title, author, type, summary, content, from };
       _article.utime = Date.now();
 
-      Article.update({ id, id }, { $set: _article });
+      Article.update({ id }, { $set: _article });
     } catch (error) {
       console.log(error);
     }

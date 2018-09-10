@@ -13,7 +13,7 @@ class CreateArticleAction {
         code: 3200,
         status: false,
         msg: 'param error',
-        data: []
+        data: null
       });
       return;
     }
@@ -31,7 +31,7 @@ class CreateArticleAction {
         code: 200,
         status: true,
         msg: 'success',
-        data: []
+        data: null
       });
     } catch (error) {
       console.log(error);
