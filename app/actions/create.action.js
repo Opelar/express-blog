@@ -1,7 +1,7 @@
 const dbAdap = require('../lib/dbAdap');
 
 class CreateArticleAction {
-  async createArticle(req, res, next) {
+  async createArticle(req, res) {
     let { title, author, summary, content } = req.body;
 
     if (!title || !content) {

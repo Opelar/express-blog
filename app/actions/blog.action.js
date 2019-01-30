@@ -1,7 +1,7 @@
 const dbAdap = require('../lib/dbAdap');
 
 class BlogAction {
-  async renderHomePage(req, res, next) {
+  async renderHomePage(req, res) {
     let initList = [];
     let list = [];
     try {
@@ -27,7 +27,7 @@ class BlogAction {
     res.render('index', { title: '博客首页', articleList: list });
   }
 
-  async renderDeatilsPage(req, res, next) {
+  async renderDeatilsPage(req, res) {
     const query = req.query;
     if (!query) {
       res.json({

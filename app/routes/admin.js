@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const adminAction = require("../actions/admin_action");
-const createArticleAction = require("../actions/create_action");
+const adminAction = require("../actions/admin.action");
+const createArticleAction = require("../actions/create.action");
 
 router.get("/", adminAction.adminIndexPage);
 router.get("/login", adminAction.loginPage);

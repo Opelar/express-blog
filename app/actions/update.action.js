@@ -1,7 +1,7 @@
 const dbAdap = require('../lib/dbAdap');
 
 class UpdateArticleAction {
-  async updateArticle(req, res, next) {
+  async updateArticle(req, res) {
     const { id, title, author, type, summary, content, from } = req.body;
 
     if (!id || !title || !content) {

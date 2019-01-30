@@ -1,27 +1,9 @@
 const sign = require('../lib/sign');
 const dbAdap = require('../lib/dbAdap');
-const adminUser = require('../lib/adminUser');
-
-async function registerAdmin() {
-  const User = await dbAdap.getCollection('user');
-  const isExist = await User.count({
-    $or: [{ username: adminUser.username }]
-  });
-
-  if (isExist) return;
-
-  let u = {};
-  u.id = dbAdap.newIdString();
-  u.username = adminUser.username;
-  u.salt = sign.getSalt();
-  u.pwdhash = sign.encodePwd(adminUser.password, u.salt);
-  u.ctime = u.utime = Date.now();
-  
-  User.insertOne(u);
-}
+const registerAdmin = require('./registerAdmin');
 
 class AdminAction {
-  loginPage(req, res, next) {
+  loginPage(req, res) {
     if (req.session.isLogin) {
       return res.redirect('/admin');
     }
@@ -29,21 +11,21 @@ class AdminAction {
     res.render('admin_login', { title: '博客后台登录' });
   }
 
-  adminIndexPage(req, res, next) {
+  adminIndexPage(req, res) {
     if (!req.session.isLogin) {
       return res.redirect('/admin/login');
     }
     res.render('admin_index', { title: '博客后台管理' });
   }
 
-  adminArticleCreate(req, res, next) {
+  adminArticleCreate(req, res) {
     if (!req.session.isLogin) {
       return res.redirect('/admin/login');
     }
     res.render('admin_article_create', { title: '文章录入' });
   }
 
-  async login(req, res, next) {
+  async login(req, res) {
     const { username, password } = req.body;
     if (!username || !password) {
       res.json({
