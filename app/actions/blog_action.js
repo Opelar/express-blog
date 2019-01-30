@@ -1,7 +1,6 @@
 const dbAdap = require('../lib/dbAdap');
 
 class BlogAction {
-  // blog home page
   async renderHomePage(req, res, next) {
     let initList = [];
     let list = [];
@@ -31,7 +30,7 @@ class BlogAction {
   async renderDeatilsPage(req, res, next) {
     const query = req.query;
     if (!query) {
-      res.send({
+      res.json({
         code: 3200,
         status: false,
         msg: 'param error',

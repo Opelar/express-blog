@@ -1,15 +1,11 @@
 const dbAdap = require('../lib/dbAdap');
 
 class CreateArticleAction {
-  // 文章录入
   async createArticle(req, res, next) {
     let { title, author, summary, content } = req.body;
 
-    // console.log(req.body);
-
     if (!title || !content) {
-      // 返回参数错误
-      res.send({
+      res.json({
         code: 3200,
         status: false,
         msg: 'param error',
@@ -26,7 +22,6 @@ class CreateArticleAction {
 
       Article.insertOne(_article);
 
-      // 返回成功
       res.json({
         code: 200,
         status: true,

@@ -1,0 +1,28 @@
+{
+  "apps": [
+    {
+      "name": "opelar-blog",
+      "script": "app.js",
+      "env": {
+        "COMMON_VARIABLE": true
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    }
+  ],
+  "deploy": {
+    "production": {
+      "user": "opelar",
+      "host": ["106.14.127.242"],
+      "port": "22",
+      "ref": "origin/master",
+      "repo": "git@git.coding.net:opelar/opelar-blog.git",
+      "path": "/www/website/production",
+      "ssh_options": "StrictHostKeyChecking=no",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}

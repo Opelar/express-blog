@@ -2,31 +2,25 @@ const sign = require('../lib/sign');
 const dbAdap = require('../lib/dbAdap');
 const adminUser = require('../lib/adminUser');
 
-// 注册后台管理用户
 async function registerAdmin() {
   const User = await dbAdap.getCollection('user');
   const isExist = await User.count({
     $or: [{ username: adminUser.username }]
   });
 
-  console.log(isExist);
   if (isExist) return;
 
   let u = {};
-  // 基础id username
   u.id = dbAdap.newIdString();
   u.username = adminUser.username;
-  // 生成盐值及密码hash
   u.salt = sign.getSalt();
   u.pwdhash = sign.encodePwd(adminUser.password, u.salt);
-  // 生成创建修改时间戳
   u.ctime = u.utime = Date.now();
-  // 入库
+  
   User.insertOne(u);
 }
 
 class AdminAction {
-  // get login page
   loginPage(req, res, next) {
     if (req.session.isLogin) {
       return res.redirect('/admin');
@@ -35,7 +29,6 @@ class AdminAction {
     res.render('admin_login', { title: '博客后台登录' });
   }
 
-  // get admin index
   adminIndexPage(req, res, next) {
     if (!req.session.isLogin) {
       return res.redirect('/admin/login');
@@ -43,7 +36,6 @@ class AdminAction {
     res.render('admin_index', { title: '博客后台管理' });
   }
 
-  // create article page
   adminArticleCreate(req, res, next) {
     if (!req.session.isLogin) {
       return res.redirect('/admin/login');
@@ -51,11 +43,10 @@ class AdminAction {
     res.render('admin_article_create', { title: '文章录入' });
   }
 
-  // post login
   async login(req, res, next) {
     const { username, password } = req.body;
     if (!username || !password) {
-      res.send({
+      res.json({
         code: 3200,
         status: false,
         msg: 'param error',
@@ -66,10 +57,9 @@ class AdminAction {
     try {
       const User = await dbAdap.getCollection('user');
       const u = await User.findOne({ username: username });
-      // console.log(u);
 
       if (!u) {
-        res.send({
+        res.json({
           code: 4101,
           status: false,
           msg: 'user not exists',
